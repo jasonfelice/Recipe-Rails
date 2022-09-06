@@ -532,3 +532,171 @@ Processing by UserController#index as HTML
 Completed 200 OK in 8ms (Views: 4.6ms | ActiveRecord: 0.3ms | Allocations: 5015)
 
 
+Started GET "/" for 127.0.0.1 at 2022-09-06 14:50:10 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UserController#index as HTML
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.0ms | Allocations: 2723)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2022-09-06 14:50:10 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.6ms | Allocations: 863)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 7.2ms | Allocations: 4094)
+  Rendered layout layouts/application.html.erb (Duration: 48.8ms | Allocations: 42908)
+Completed 200 OK in 69ms (Views: 53.8ms | ActiveRecord: 4.0ms | Allocations: 53131)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2022-09-06 14:50:23 +0200
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"tests@testeing.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "tests@testeing.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 236ms (ActiveRecord: 0.5ms | Allocations: 5882)
+
+
+Started GET "/" for 127.0.0.1 at 2022-09-06 14:50:23 +0200
+Processing by UserController#index as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  Rendered user/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 149)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 2902)
+Completed 200 OK in 7ms (Views: 4.3ms | ActiveRecord: 0.2ms | Allocations: 5270)
+
+
+Started GET "/" for 127.0.0.1 at 2022-09-06 14:56:16 +0200
+Processing by UserController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  Rendered user/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 2071)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 2165)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 5.5ms | Allocations: 11479)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass
+
+<p>just you '.freeze;@output_buffer.append=( @user.name);@output_buffer.safe_append='</p>
+                                                  ^^^^^):
+    1: <h1>There's nothing here yet</h1>
+    2: <p>just you <%= @user.name%></p>
+  
+app/views/user/index.html.erb:2
+Started GET "/" for 127.0.0.1 at 2022-09-06 14:56:47 +0200
+Processing by UserController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  Rendered user/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 4937)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 5032)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.3ms | Allocations: 7423)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `name' for #<ActionView::Base:0x00000000011580>
+
+<p>just you '.freeze;@output_buffer.append=( @user[name]);@output_buffer.safe_append='</p>
+                                                   ^^^^):
+    1: <h1>There's nothing here yet</h1>
+    2: <p>just you <%= @user[name]%></p>
+  
+app/views/user/index.html.erb:2
+Started GET "/" for 127.0.0.1 at 2022-09-06 14:56:59 +0200
+Processing by UserController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  Rendered user/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 4712)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 4800)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.5ms | Allocations: 6588)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `name' for #<ActionView::Base:0x00000000011850>
+
+<p>just you '.freeze;@output_buffer.append=( @user[name]);@output_buffer.safe_append='</p>
+                                                   ^^^^):
+    1: <h1>There's nothing here yet</h1>
+    2: <p>just you <%= @user[name]%></p>
+  
+app/views/user/index.html.erb:2
+Started GET "/" for 127.0.0.1 at 2022-09-06 14:57:09 +0200
+Processing by UserController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  Rendered user/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1992)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 2087)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.3ms | Allocations: 4259)
+
+
+  
+ActionView::Template::Error (undefined method `[]' for nil:NilClass
+
+<p>just you '.freeze;@output_buffer.append=( @user[:name]);@output_buffer.safe_append='</p>
+                                                  ^^^^^^^):
+    1: <h1>There's nothing here yet</h1>
+    2: <p>just you <%= @user[:name]%></p>
+  
+app/views/user/index.html.erb:2
+Started GET "/" for 127.0.0.1 at 2022-09-06 14:57:31 +0200
+Processing by UserController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/user/index.html.erb:2
+  Rendered user/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1855)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 1949)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.4ms | Allocations: 4301)
+
+
+  
+ActionView::Template::Error (no implicit conversion of Symbol into Integer):
+    1: <h1>There's nothing here yet</h1>
+    2: <p>just you <%= @users[:name]%></p>
+  
+app/views/user/index.html.erb:2
+Started GET "/" for 127.0.0.1 at 2022-09-06 14:57:54 +0200
+Processing by UserController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  Rendered user/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 208)
+  Rendered layout layouts/application.html.erb (Duration: 13.4ms | Allocations: 16200)
+Completed 200 OK in 21ms (Views: 14.8ms | ActiveRecord: 0.3ms | Allocations: 18544)
+
+
+Started GET "/" for 127.0.0.1 at 2022-09-06 14:58:02 +0200
+Processing by UserController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  Rendered user/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 198)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 3146)
+Completed 200 OK in 9ms (Views: 5.7ms | ActiveRecord: 0.2ms | Allocations: 5575)
+
+
+Started GET "/" for 127.0.0.1 at 2022-09-06 14:58:33 +0200
+Processing by UserController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  Rendered user/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 198)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 3146)
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 0.1ms | Allocations: 5534)
+
+
+Started GET "/" for 127.0.0.1 at 2022-09-06 14:58:42 +0200
+Processing by UserController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  Rendered user/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 197)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 3145)
+Completed 200 OK in 7ms (Views: 4.7ms | ActiveRecord: 0.1ms | Allocations: 5566)
+
+
