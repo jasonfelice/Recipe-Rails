@@ -1,2 +1,15 @@
+<% if flash[:success] %>
+  <div>
+    <p><%= flash[:success] %></p>
+  </div>
+<% end %>
+
 <h1><%=@inventory.name%></h1>
-<p><%=@inventory.description%></p>
+<%= link_to 'Add food', "/inventory_foods/#{@inventory.id}/new" %>
+
+<div>
+  <% @foods.each do |food| %>
+    <p><%= food.food.name %></p>
+    <%= button_to 'Delete', "/inventory_foods/#{@inventory.id}/destroy/#{food.id}", method: :delete %>
+  <% end %>
+</div>
