@@ -20,7 +20,7 @@ class InventoryFoodsController < ApplicationController
     food_list = food_list.drop(1)
     food_list.each do |food|
       quantity = Food.find(food.to_i).quantity
-      new_inventory_food = InventoryFood.new(food_id: food.to_i, quantity: quantity, inventory_id: params[:id])
+      new_inventory_food = InventoryFood.new(food_id: food.to_i, quantity:, inventory_id: params[:id])
       new_inventory_food.save
     end
     redirect_to inventory_path(params[:id]), flash: { success: 'Inventory food has been added successfully' }
