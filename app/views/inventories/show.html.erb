@@ -8,8 +8,18 @@
 <%= link_to 'Add food', "/inventory_foods/#{@inventory.id}/new" %>
 
 <div>
-  <% @foods.each do |food| %>
-    <p><%= food.food.name %></p>
-    <%= button_to 'Delete', "/inventory_foods/#{@inventory.id}/destroy/#{food.id}", method: :delete %>
-  <% end %>
+  <table>
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Actions</th>
+    </tr>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.food.name %></td>
+        <td><%= food.food.quantity %></td>
+        <td><%= button_to 'Delete', "/inventory_foods/#{@inventory.id}/destroy/#{food.id}", method: :delete %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
