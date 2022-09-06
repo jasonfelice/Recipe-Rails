@@ -1,0 +1,14 @@
+<% if @inventories.empty? %>
+  <h1>You have no inventories yet</h1>
+<% end %>
+
+<%= link_to 'Add a new inventory', new_inventory_path %>
+
+<% unless @inventories.empty? %>
+  <h2>Your inventories list:</h2>
+  <% @inventories.each do |inventory| %>
+    <%=link_to inventory.name, inventory_path(inventory.id)%>
+    <p><%=inventory.description%></p>
+    <%= button_to 'Delete', inventory_path(inventory.id), method: :delete %>
+  <% end %>
+<% end %>
