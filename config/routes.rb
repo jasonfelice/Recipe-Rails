@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  delete 'inventory_foods/:id/destroy/:food_id', to: 'inventory_foods#destroy'
+  get 'inventory_foods/:id/new', to: 'inventory_foods#new'
+  post 'inventory_foods/:id/create', to: 'inventory_foods#create'
   get 'user/index'
   get 'user/show'
   resources :inventories, only: [:index, :show, :new, :create, :destroy]
