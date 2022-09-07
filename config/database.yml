@@ -60,7 +60,7 @@ development:
 test:
   <<: *default
   database: recipe_app_test
-  username: postgres
+  # username: postgres
   # password: '0000'
 
 # As with config/credentials.yml, you never want to store sensitive information,
