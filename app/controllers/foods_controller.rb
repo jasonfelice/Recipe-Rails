@@ -1,6 +1,6 @@
 class FoodsController < ApplicationController
   def index
-    @foods=Food.all
+    @foods = Food.all
   end
 
   def new
@@ -15,22 +15,17 @@ class FoodsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def destroy
     food = Food.find(params[:id])
     food.destroy
     redirect_to foods_path
-
   end
-  
-  
 
-  private 
+  private
+
   def food_params
-    
-      params.require(:food).permit(:name, :price, :measurement_unit,:user_id)
-    
-  end 
+    params.require(:food).permit(:name, :price, :measurement_unit, :user_id)
+  end
 end
