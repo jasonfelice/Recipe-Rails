@@ -3,5 +3,5 @@ class Inventory < ApplicationRecord
   validates :description, presence: true, length: { maximum: 200 }
 
   belongs_to :user
-  has_many :food
+  has_many :inventory_foods
 end
