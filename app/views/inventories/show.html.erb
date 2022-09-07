@@ -17,7 +17,7 @@
     <% @foods.each do |food| %>
       <tr>
         <td><%= food.food.name %></td>
-        <td><%= food.food.quantity %></td>
+        <td><%= food.quantity %></td>
         <td><%= button_to 'Delete', "/inventory_foods/#{@inventory.id}/destroy/#{food.id}", method: :delete %></td>
       </tr>
     <% end %>

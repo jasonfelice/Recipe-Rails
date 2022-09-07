@@ -19,14 +19,16 @@ class InventoryFoodsController < ApplicationController
     food_list = params[:inventory_food][:food_list]
     food_list = food_list.drop(1)
     food_list.each do |food|
-      quantity = Food.find(food.to_i).quantity
-      new_inventory_food = InventoryFood.new(food_id: food.to_i, quantity:, inventory_id: params[:id])
+      next unless InventoryFood.where(food_id: food.to_i).blank?
+
+      new_inventory_food = InventoryFood.new(food_id: food.to_i, quantity: params[:inventory_food][:quantity],
+                                             inventory_id: params[:id])
       new_inventory_food.save
     end
-    redirect_to inventory_path(params[:id]), flash: { success: 'Inventory food has been added successfully' }
+    redirect_to inventory_path(params[:id]), flash: { success: 'Inventory food has been added successfully!' }
   end
 
   def inventory_food_params
-    params.require(:inventory_food).permit(:food_list)
+    params.require(:inventory_food).permit(:food_list, :quantity)
   end
 end
