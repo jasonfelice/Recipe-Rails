@@ -1,0 +1,21 @@
+
+<%= form_with model: @food do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :measurement_unit %><br>
+    <%= form.text_field :measurement_unit %>
+  </div>
+<div>
+    <%= form.label :price %><br>
+    <%= form.number_field :price %>
+  </div>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
