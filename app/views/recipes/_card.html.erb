@@ -13,6 +13,6 @@
     </div>
   </div>
   <% if can? :manage, recipe %>
-    <%= button_to "Delete", user_recipe_path(recipe.user, recipe.id), method: :delete, class: "btn btn-secondary" %>
+    <%= button_to "Delete", user_recipe_path(recipe.user, recipe.id), method: :delete, class: "btn btn-secondary m-3" %>
   <% end %>
 </div>
