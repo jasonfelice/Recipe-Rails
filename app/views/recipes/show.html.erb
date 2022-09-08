@@ -24,4 +24,24 @@
       <%= link_to "Add ingredient", new_user_recipe_recipe_food_path(@recipe.user, @recipe), class: "btn btn-danger" %>
     <% end %>
   </div>
+
+  <table class="table table-striped table-bordered mt-5 text-center">
+  <thead>
+    <tr>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Value</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Test</th>
+      <td>5</td>
+      <td>$5.00</td>
+      <td>Delete/Modify</td>
+    </tr>
+    <tr>
+  </tbody>
+</table>
 </section>
