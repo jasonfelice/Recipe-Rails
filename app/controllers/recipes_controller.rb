@@ -1,5 +1,7 @@
 class RecipesController < ApplicationController
-  def index; end
+  def index
+    @recipes = Recipe.includes([:user]).where(user_id: current_user.id).order(created_at: :desc)
+  end
 
   def public
     @public_recipes = Recipe.includes([:user]).where(public: true).order(created_at: :desc)
@@ -22,5 +24,18 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.includes([:user]).find(params[:id])
+  end
+
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to root_path, notice: "Recipe deleted!"
+  end
+
+
+  private
+
+  def recipe_params
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end
