@@ -12,4 +12,7 @@
     <p class="card-text">Total Price: $120</p>
     </div>
   </div>
+  <% if can? :manage, recipe %>
+    <%= button_to "Delete", user_recipe_path(recipe.user, recipe.id), method: :delete, class: "btn btn-secondary" %>
+  <% end %>
 </div>
