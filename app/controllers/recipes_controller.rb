@@ -24,6 +24,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.includes([:user]).find(params[:id])
+    @inventories = current_user.inventories
   end
 
   def destroy
