@@ -1,4 +1,4 @@
-class RecipeFoods < ApplicationController
+class RecipeFoodsController < ApplicationController
   def new; end
 
   def create
@@ -8,6 +8,7 @@ class RecipeFoods < ApplicationController
       redirect_to user_recipe_url(@recipe.user, @recipe), notice: "Food has been added successfully!"
     else
       render :new, alert: "Something went wrong!"
+    end
   end
 
   def edit
