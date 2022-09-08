@@ -19,7 +19,7 @@ class InventoryFoodsController < ApplicationController
     food_list = params[:inventory_food][:food_list]
     food_list = food_list.drop(1)
     food_list.each do |food|
-      next unless InventoryFood.where(food_id: food.to_i).blank?
+      next unless InventoryFood.where(food_id: food.to_i, inventory_id: params[:id]).blank?
 
       new_inventory_food = InventoryFood.new(food_id: food.to_i, quantity: params[:inventory_food][:quantity],
                                              inventory_id: params[:id])

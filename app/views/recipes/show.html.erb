@@ -19,7 +19,31 @@
     </div>
   </div>
   <div class="mt-5 d-flex justify-content-around">
-    <%= link_to "Generate shopping list", root_path, class: "btn btn-secondary" %>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#recipeModal">
+      Generate shopping list
+    </button>
+
+    <div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="recipeModalLabel">Generating shopping list</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Choose an inventory to use:
+            <select class="form-select form-select-lg mt-3" aria-label=".form-select-lg example">
+              <% @inventories.each do |inventory| %>
+                <option value="#{inventory.name}"><%= inventory.name %></option>
+              <% end %>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Generate</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <% if can? :update, @recipe %>
       <%= link_to "Add ingredient", new_user_recipe_recipe_food_path(@recipe.user, @recipe), class: "btn btn-danger" %>
     <% end %>
