@@ -12,11 +12,15 @@
   </head>
 
   <body>
-  <nav> <h1> Recipe app</h1> <% if user_signed_in? %> <ul> 
-  <li> <%= link_to 'food_list', foods_path %>
-   </li>
-    <li> <%= link_to 'inventories', inventories_path%> </li>  <li>blah3 </li></ul> <%end%> </nav>
+    <!--
+      <nav> <h1> Recipe app</h1> <% if user_signed_in? %> <ul> 
+      <li> <%= link_to 'food_list', foods_path %>
+      </li>
+        <li> <%= link_to 'inventories', inventories_path%> </li>  <li>blah3 </li></ul> <%end%> </nav> 
+    -->
+    <%= render partial: "shared/navbar" %>
     <%= render partial: "shared/flash" %>
+    
     <%= yield %>
   </body>
 </html>
