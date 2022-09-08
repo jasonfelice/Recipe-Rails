@@ -1,0 +1,47 @@
+<section class="container">
+  <h1 class="text-center mb-5"><%= @recipe.name %></h1>
+<span class="badge badge-primary">Private</span>
+  <div class="recipe-info d-flex justify-content-around">
+    <div>
+      <h5>Preparation time: <%= @recipe.preparation_time %></h5>
+      <h5>Cooking time: <%= @recipe.cooking_time %></h5>
+      <div>
+        <h3 class="mt-5">Description</h3>
+        <p><%= @recipe.description %></p>
+      </div>
+    </div>
+    <div class="recipe-stat">
+      <% if @recipe.public %>
+        <span class="btn btn-warning">Public</span>
+      <% else %>
+        <span class="btn btn-primary">Private</span>
+      <% end %>
+    </div>
+  </div>
+  <div class="mt-5 d-flex justify-content-around">
+    <%= link_to "Generate shopping list", root_path, class: "btn btn-secondary" %>
+    <% if can? :update, @recipe %>
+      <%= link_to "Add ingredient", new_user_recipe_recipe_food_path(@recipe.user, @recipe), class: "btn btn-danger" %>
+    <% end %>
+  </div>
+
+  <table class="table table-striped table-bordered mt-5 text-center">
+  <thead>
+    <tr>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Value</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Test</th>
+      <td>5</td>
+      <td>$5.00</td>
+      <td>Delete/Modify</td>
+    </tr>
+    <tr>
+  </tbody>
+</table>
+</section>
