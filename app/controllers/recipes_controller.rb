@@ -1,7 +1,9 @@
 class RecipesController < ApplicationController
   def index; end
 
-  def public; end
+  def public
+    @public_recipes = Recipe.includes([:user]).where(public: true).order(created_at: :desc)
+  end
 
   def new
     @user = current_user
