@@ -1,0 +1,21 @@
+<section class="container">
+  <h1 class="text-center mb-5"><%= @recipe.name %></h1>
+<span class="badge badge-primary">Private</span>
+  <div class="recipe-info d-flex justify-content-around">
+    <div>
+      <h5>Preparation time: <%= @recipe.preparation_time %></h5>
+      <h5>Cooking time: <%= @recipe.cooking_time %></h5>
+      <div>
+        <h3 class="mt-5">Description</h3>
+        <p><%= @recipe.description %></p>
+      </div>
+    </div>
+    <div class="recipe-stat">
+      <% if @recipe.public %>
+        <span class="btn btn-warning">Public</span>
+      <% else %>
+        <span class="btn btn-primary">Private</span>
+      <% end %>
+    </div>
+  </div>
+</section>
