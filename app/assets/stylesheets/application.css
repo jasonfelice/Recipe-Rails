@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+nav {
+  color: black;
+  display: flex;
+  width: 100%;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  width: 30%;
+  align-items: center;
+  justify-content: space-between;
+}

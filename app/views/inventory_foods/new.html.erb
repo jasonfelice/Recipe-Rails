@@ -1,0 +1,8 @@
+<h1>Add food</h1>
+<%= form_with model: @inventory_food, url: "/inventory_foods/#{@inventory.id}/create", method: :post do |form| %>
+  <p>Choose food from this list (press cntrl+click to select multiple)</p>
+  <%= form.select :food_list, Food.order(:name).where(user_id:current_user.id).pluck(:name, :id), {}, {:multiple => true, required:true} %>
+  <%= form.label :quantity, 'Quantity' %>
+    <%= form.number_field :quantity %>
+  <%= form.submit 'Add food' %>
+<% end %>
