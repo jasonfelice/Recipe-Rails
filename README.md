@@ -13,6 +13,7 @@ To get a local copy up and running follow these simple example steps.
 - Run `Rspec spec` to run tests.
 
 ## Authors
+
 👤 **Jake Felice**
 
 - GitHub: [@jasonfelice](https://github.com/jasonfelice)
@@ -24,6 +25,12 @@ To get a local copy up and running follow these simple example steps.
 - GitHub: [@kanorox](https://github.com/kanorox)
 - Twitter: [Twitter](https://twitter.com/)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/)
+
+👤 **Manel Hammouche**
+
+- GitHub: [@ha-manel](https://github.com/ha-manel)
+- Twitter: [@hamanel](https://twitter.com/ha_manel_)
+- LinkedIn: [Manel Hammouche](https://www.linkedin.com/in/manel-hammouche/)
 
 ## 🤝 Contributing
 
