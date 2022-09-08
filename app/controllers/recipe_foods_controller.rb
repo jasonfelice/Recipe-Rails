@@ -1,9 +1,13 @@
 class RecipeFoodsController < ApplicationController
-  def new; end
+  def new
+    @recipe_food = RecipeFood.new
+    @recipe = Recipe.find(params[:recipe_id])
+    @foods = Food.all
+  end
 
   def create
-    @recipe = Recipe.find(params[:recipe_id])
-    @recipe_food = @recipe.recipe_foods.create(quantity: params[:quantity], food_id: params[:food_id])
+    @foods = Food.all
+    @recipe_food = RecipeFood.new(quantity: params[:quantity], food_id: params[:food_id])
     if @recipe_food.save
       redirect_to user_recipe_url(@recipe.user, @recipe), notice: 'Food has been added successfully!'
     else
