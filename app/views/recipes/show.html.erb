@@ -18,4 +18,10 @@
       <% end %>
     </div>
   </div>
+  <div class="mt-5 d-flex justify-content-around">
+    <%= link_to "Generate shopping list", root_path, class: "btn btn-secondary" %>
+    <% if can? :update, @recipe %>
+      <%= link_to "Add ingredient", new_user_recipe_recipe_food_path(@recipe.user, @recipe), class: "btn btn-danger" %>
+    <% end %>
+  </div>
 </section>
