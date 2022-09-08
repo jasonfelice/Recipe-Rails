@@ -22,7 +22,8 @@ class RecipeFoodsController < ApplicationController
   def update
     @recipe_food = RecipeFood.find(params[:id])
     if @recipe_food.update(recipe_update_params)
-      redirect_to user_recipe_url(@recipe_food.recipe.user, @recipe_food.recipe), notice: 'Recipe food updated Successfully!'
+      redirect_to user_recipe_url(@recipe_food.recipe.user, @recipe_food.recipe),
+                  notice: 'Recipe food updated Successfully!'
     else
       redirect_to user_recipe_url(@recipe_food.recipe.user, @recipe_food.recipe), alert: 'Something went wrong!'
     end
@@ -32,7 +33,7 @@ class RecipeFoodsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = @recipe.recipe_foods.find(params[:id])
     @recipe_food.destroy
-    flash[:notice] = "Ingredient deleted!"
+    flash[:notice] = 'Ingredient deleted!'
     redirect_to user_recipe_url(@recipe.user, @recipe)
   end
 
