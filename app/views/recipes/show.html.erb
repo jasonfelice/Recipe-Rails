@@ -35,12 +35,19 @@
     </tr>
   </thead>
   <tbody>
+  <% @recipe.recipe_foods.each do |ingredient| %>
     <tr>
-      <th scope="row">Test</th>
-      <td>5</td>
-      <td>$5.00</td>
-      <td>Delete/Modify</td>
+      <th scope="row"><%= ingredient.food.name %></th>
+      <td><%= ingredient.quantity %></td>
+      <td><%= ingredient.quantity* ingredient.food.price %></td>
+      <td>
+        <div class="d-flex justify-content-center gap-3">
+          <%= button_to "Delete", user_recipe_recipe_food_path(@recipe.user, @recipe.id, ingredient.id), method: :delete, class: "btn btn-danger" %>
+          <%= link_to "Edit", edit_user_recipe_recipe_food_path(@recipe.user, @recipe, ingredient), class: "btn btn-primary" %>
+        </div>
+      </td>
     </tr>
+    <% end %>
     <tr>
   </tbody>
 </table>
