@@ -12,22 +12,26 @@
     </div>
   </div>
 
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Food</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Price</th>
-      </tr>
-    </thead>
-  <tbody>
-      <% @result[:items].each do |item| %>
+  <% if @result[:items] %>
+    <table class="table table-bordered table-striped">
+      <thead>
         <tr>
-          <td><%= item[:name] %></td>
-          <td><%= item[:quantity] %> <%= item[:measurement_unit] %> </td>
-          <td>$<%= item[:price] %></td>
+          <th scope="col">Food</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Price</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+    <tbody>
+        <% @result[:items].each do |item| %>
+          <tr>
+            <td><%= item[:name] %></td>
+            <td><%= item[:quantity] %> <%= item[:measurement_unit] %> </td>
+            <td>$<%= item[:price] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <h2> You have all the ingredients.</h2>
+  <% end %>
 </div>
