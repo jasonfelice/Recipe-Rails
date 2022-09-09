@@ -30,17 +30,16 @@
             <h5 class="modal-title" id="recipeModalLabel">Generating shopping list</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            Choose an inventory to use:
-            <select class="form-select form-select-lg mt-3" aria-label=".form-select-lg example">
-              <% @inventories.each do |inventory| %>
-                <option value="#{inventory.name}"><%= inventory.name %></option>
-              <% end %>
-            </select>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Generate</button>
-          </div>
+          
+          <%= form_with url: "/shopping_list/#{@recipe.id}", method: :post do |form| %>
+            <div class="modal-body">
+              Choose an inventory to use:
+              <%= form.select :inventory_id, current_user.inventories.order(:name).pluck(:name, :id), {}, class: "form-select form-select-lg mt-3" %>
+            </div>
+            <div class="modal-footer">
+              <%= form.submit 'Generate', class: "btn btn-primary" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
