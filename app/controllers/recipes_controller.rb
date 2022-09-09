@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
     if @recipe.save
-      redirect_to root_path, notice: 'Recipe Added successfully!'
+      redirect_to user_recipes_path(current_user.id), notice: 'Recipe Added successfully!'
     else
       render :show
     end
