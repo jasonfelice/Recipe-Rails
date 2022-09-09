@@ -1,12 +1,16 @@
+
+<div class=" m-5 d-flex justify-content-between align-items-center" >
 <h1>List of foods</h1>
 
-<button> <%= link_to 'Add Food',new_food_path%> </button>
+ <%= link_to 'Add Food',new_food_path, class:"btn d-flex btn-primary"%> 
+
+</div>
 
 
-<table>
+<table  class="table table-striped m-5">
 <thead>
 <tr>
-<th>Food </th>
+<th scope="col">Food </th>
 <th>Measurement unit </th>
 <th>Unit price </th>
 <th>Actions </th>
@@ -18,7 +22,7 @@
             <td> <%= food.name%></td>
             <td> <%= food.measurement_unit%></td>
             <td> $ <%= food.price%></td>
-            <td><%= button_to 'delete', food_path(food.id), method: :delete%></td>
+            <td><%= button_to 'delete', food_path(food.id), method: :delete, class:"btn btn-warning"%></td>
    </tr>
     <%end%>
 </tbody>
