@@ -1,0 +1,10 @@
+<div class="container-fluid w-50 d-flex flex-column align-items-center">
+  <h1 class="mb-5">Add food</h1>
+  <%= form_with model: @inventory_food, url: "/inventory_foods/#{@inventory.id}/create", method: :post do |form| %>
+    <p>Choose food from this list (press cntrl+click to select multiple)</p>
+    <%= form.select :food_list, Food.order(:name).where(user_id:current_user.id).pluck(:name, :id), {}, {:multiple => true, required:true, class: "form-select mb-3"} %>
+    <%= form.label :quantity, 'Quantity:', class: "form-label" %>
+    <%= form.number_field :quantity, class: "form-control form-control-lg mb-4" %>
+    <%= form.submit 'Add food', class: "btn btn-primary" %>
+  <% end %>
+</div>

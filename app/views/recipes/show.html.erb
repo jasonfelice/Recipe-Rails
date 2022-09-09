@@ -1,0 +1,77 @@
+<section class="container">
+  <h1 class="text-center mb-5"><%= @recipe.name %></h1>
+<span class="badge badge-primary">Private</span>
+  <div class="recipe-info d-flex justify-content-around">
+    <div>
+      <h5>Preparation time: <%= @recipe.preparation_time %></h5>
+      <h5>Cooking time: <%= @recipe.cooking_time %></h5>
+      <div>
+        <h3 class="mt-5">Description</h3>
+        <p><%= @recipe.description %></p>
+      </div>
+    </div>
+    <div class="recipe-stat">
+      <% if @recipe.public %>
+        <span class="btn btn-warning">Public</span>
+      <% else %>
+        <span class="btn btn-primary">Private</span>
+      <% end %>
+    </div>
+  </div>
+  <div class="mt-5 d-flex justify-content-around">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#recipeModal">
+      Generate shopping list
+    </button>
+
+    <div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="recipeModalLabel">Generating shopping list</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          
+          <%= form_with url: "/shopping_list/#{@recipe.id}", method: :post do |form| %>
+            <div class="modal-body">
+              Choose an inventory to use:
+              <%= form.select :inventory_id, current_user.inventories.order(:name).pluck(:name, :id), {}, class: "form-select form-select-lg mt-3" %>
+            </div>
+            <div class="modal-footer">
+              <%= form.submit 'Generate', class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% if can? :update, @recipe %>
+      <%= link_to "Add ingredient", new_user_recipe_recipe_food_path(@recipe.user, @recipe), class: "btn btn-danger" %>
+    <% end %>
+  </div>
+
+  <table class="table table-striped table-bordered mt-5 text-center">
+  <thead>
+    <tr>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Value</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @recipe.recipe_foods.each do |ingredient| %>
+    <tr>
+      <th scope="row"><%= ingredient.food.name %></th>
+      <td><%= ingredient.quantity %></td>
+      <td>$ <%= ingredient.quantity* ingredient.food.price %></td>
+      <td>
+        <div class="d-flex justify-content-center gap-3">
+          <%= button_to "Delete", user_recipe_recipe_food_path(@recipe.user, @recipe.id, ingredient.id), method: :delete, class: "btn btn-danger" %>
+          <%= link_to "Edit", edit_user_recipe_recipe_food_path(@recipe.user, @recipe, ingredient), class: "btn btn-primary" %>
+        </div>
+      </td>
+    </tr>
+    <% end %>
+    <tr>
+  </tbody>
+</table>
+</section>

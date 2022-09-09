@@ -1,0 +1,37 @@
+<div class="container-fluid w-50 d-flex flex-column align-items-center">
+  <h1>Shopping list</h1>
+  <div class="container-fluid w-100 d-flex justify-content-between align-items-center my-4">
+    <div class="container-fluid w-50 d-flex flex-column align-items-center">
+      <p>Amount of food to buy: <%= @result[:missing_items] %></p>
+      <p>Total price of food needed: $<%= @result[:total_price] %></p>
+    </div>
+
+    <div class="container-fluid w-50 d-flex flex-column align-items-center">
+      <p>Recipe: <%= link_to "#{@result[:recipe_name]}", "/users/#{current_user.id}/recipes/#{@result[:recipe_id]}" %></p>
+      <p>Inventory: <%= link_to "#{@result[:inventory_name]}", "/inventories/#{@result[:inventory_id]}" %></p>
+    </div>
+  </div>
+
+  <% if @result[:items] %>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Food</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+    <tbody>
+        <% @result[:items].each do |item| %>
+          <tr>
+            <td><%= item[:name] %></td>
+            <td><%= item[:quantity] %> <%= item[:measurement_unit] %> </td>
+            <td>$<%= item[:price] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <h2> You have all the ingredients.</h2>
+  <% end %>
+</div>

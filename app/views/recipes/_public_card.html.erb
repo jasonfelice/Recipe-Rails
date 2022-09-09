@@ -1,0 +1,21 @@
+<div class="card mb-3" style="width: 50rem;">
+  <div class="card-body d-flex space-between">
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">
+        <%= link_to recipe.name, user_recipe_path(id: recipe.id, user_id: recipe.user.id) %>
+      </h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= recipe.user.name %></h6>
+      <p class="mt-4"><%= recipe.description %></p>
+    </div>
+    <div class="card-body d-flex flex-column text-center">
+    <p class="card-text">Total food items: <%= recipe.recipe_foods.length %></p>
+    <p class="card-text">Total Price: $
+    <% sum = 0 %>
+    <% recipe.recipe_foods.each do |ingredient| %>
+      <% food = Food.find(ingredient.food_id) %>
+      <% sum += food.price * ingredient.quantity %>
+    <% end %>
+    <%= sum %>
+    </div>
+  </div>
+</div>

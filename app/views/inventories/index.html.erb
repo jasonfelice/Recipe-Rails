@@ -1,0 +1,21 @@
+
+<div class="container-fluid d-flex flex-column align-items-center">
+  <% if @inventories.empty? %>
+    <h1>You have no inventories yet</h1>
+  <% end %>
+
+  <%= link_to 'Add a new inventory', new_inventory_path, class: "btn btn-primary" %>
+
+  <% unless @inventories.empty? %>
+    <h2 class="mt-3">Your inventories list:</h2>
+    <% @inventories.each do |inventory| %>
+      <div class="card w-50 mb-3">
+        <h5 class="card-header"><%=link_to inventory.name, inventory_path(inventory.id), class: " text-decoration-none" %></h5>
+        <div class="card-body">
+          <p class="card-text"><%=inventory.description%></p>
+          <%= button_to 'Delete', inventory_path(inventory.id), method: :delete, class: "btn btn-danger" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
