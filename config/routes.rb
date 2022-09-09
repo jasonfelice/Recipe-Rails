@@ -14,4 +14,6 @@ Rails.application.routes.draw do
       resources :recipe_foods, only: [:new, :create, :destroy, :update, :edit]
     end
   end
+  post 'shopping_list/:recipe_id', to: 'shopping_lists#generate'
+  get 'shopping_list', to: 'shopping_lists#show'
 end
