@@ -4,7 +4,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse w-100 d-flex justify-content-between" id="navbarSupportedContent">
       <ul class="navbar-nav w-auto">
         <li class="nav-item mx-2">
           <%= link_to "Public Recipes", root_path, class: "nav-link active" %>
@@ -19,6 +19,9 @@
           <%= link_to "Inventories", inventories_path, class: "nav-link active" %>
         </li>
       </ul>
+
+      <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary me-5"
+      %>
     </div>
   </div>
 </nav>
