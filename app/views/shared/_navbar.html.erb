@@ -10,7 +10,9 @@
           <%= link_to "Public Recipes", root_path, class: "nav-link active" %>
         </li>
         <li class="nav-item mx-2">
+        <% if user_signed_in?%>
           <%= link_to "My Recipes", "/users/#{current_user.id}/recipes", class: "nav-link active" %>
+          <%end%>
         </li>
         <li class="nav-item mx-2">
           <%= link_to "Food", foods_path, class: "nav-link active" %>
