@@ -1,21 +1,23 @@
-
+<div class="container-fluid w-50 d-flex flex-column align-items-center">
 <%= form_with model: @food do |form| %>
   <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
+    <%= form.label :name, class: "form-label" %><br>
+    <%= form.text_field :name,  class:"form-control" %>
   </div>
 
   <div>
-    <%= form.label :measurement_unit %><br>
-    <%= form.text_field :measurement_unit %>
+    <%= form.label :measurement_unit, class:"form-label" %><br>
+    <%= form.text_field :measurement_unit, class:"form-control" %>
   </div>
 <div>
-    <%= form.label :price %><br>
-    <%= form.number_field :price %>
+    <%= form.label :price , class:"form-label"%><br>
+    <%= form.number_field :price ,  class:"form-control"%>
   </div>
 
 
   <div>
-    <%= form.submit %>
+    <%= form.submit 'Create food', class: "btn btn-primary my-3"  %>
   </div>
 <% end %>
+
+</div>

@@ -1,26 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe 'tests for sign_in page', type: :feature do
-  
   describe 'test for sign up and login' do
-
     scenario ' I can see the name of all foods listed.' do
-      visit '/users/sign_up'  
+      visit '/users/sign_up'
 
-  user = User.create!(:name => "test",:email => 'test@example.com', :password => 'f4k3p455w0rd')
-user.confirmed_at = Time.now
-user.save
-      
+      user = User.create!(name: 'test', email: 'test@example.com', password: 'f4k3p455w0rd')
+      user.confirmed_at = Time.now
+      user.save
+
       expect(page).to have_content("Didn't receive confirmation instructions")
     end
     scenario 'I can see text Log in' do
       visit '/users/sign_in'
-      
+
       expect(page).to have_content('Log in')
     end
   end
-
-
 end
 
 # #  RSpec.describe "Signing in", type: :feature  do
@@ -50,7 +46,6 @@ end
 # #     expect(page).to have_content 'Invalid email or password'
 # #   end
 # # end
-
 
 # describe "the signin process", type: :feature do
 #   before :each do
