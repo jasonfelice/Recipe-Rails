@@ -20,8 +20,7 @@
         </li>
       </ul>
 
-      <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary me-5"
-      %>
+      <%= link_to "Sign Out", destroy_user_session_path, 'data-turbo-method': :delete, class: "btn btn-outline-danger me-5" %>
     </div>
   </div>
 </nav>
